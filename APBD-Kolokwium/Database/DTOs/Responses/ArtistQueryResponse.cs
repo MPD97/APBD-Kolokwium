@@ -9,6 +9,6 @@ namespace Database.DTOs.Responses
     {
         public int IdArtist { get; set; }
         public string Nickname { get; set; }
-        public ICollection<ArtistEvent> ArtistEvents { get; set; }
+        public ICollection<Event> Events { get; set; }
     }
 }

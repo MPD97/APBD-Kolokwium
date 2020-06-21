@@ -25,15 +25,18 @@ namespace Services
            
             if (artist == null)
                 return null;
-            
-            artist.ArtistEvents.Where(a => a.PerformanceDate < DateTime.Now) // W których brał udział.
-                .OrderByDescending(a => a.PerformanceDate).ToArray();
 
+            var events = await _eventContext.Events.Where(a =>
+             _eventContext.ArtistEvents.Any(ae => ae.IdEvent == a.IdEvent && artist.IdArtist == ae.IdArtist)
+             == true)
+                .OrderByDescending(e => e.StartDate)
+                .ToArrayAsync();
+           
             return new ArtistQueryResponse
             {
                 IdArtist = artist.IdArtist,
                 Nickname = artist.Nickname,
-                ArtistEvents = artist.ArtistEvents
+                Events = events
             };
                 
         }
