@@ -8,6 +8,17 @@ namespace Database.Entities
     {
         public int IdArtist { get; set; }
         public string Nickname { get; set; }
+        public ICollection<ArtistEvent> ArtistEvents { get; set; }
+    }
+    public class ArtistEvent
+    {
+        public int IdEvent { get; set; }
+        public int IdArtist { get; set; }
+
+        public Event Event { get; set; }
+        public Artist Artist { get; set; }
+
+        public DateTime PerformanceDate { get; set; }
     }
     public class Event
     {
@@ -15,6 +26,8 @@ namespace Database.Entities
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+
+        public ICollection<ArtistEvent> ArtistEvents { get; set; }
     }
 
     public class Organiser
