@@ -28,11 +28,13 @@ namespace APBD_Kolokwium.Controllers
 
             if (artist == null)
             {
-                return NotFound();
+                return NotFound("Nie znaleziono artysty o podanym id.");
             }
 
             return Ok(artist);
         }
+        //PUT /api/artists/10/events/1 HTTP/1.1 
+
 
         //[HttpPut("{id}")]
         //public async Task<IActionResult> PutArtist(int id, Artist artist)
