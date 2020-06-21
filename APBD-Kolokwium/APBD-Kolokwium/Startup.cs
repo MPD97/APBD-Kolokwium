@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Services;
 
 namespace APBD_Kolokwium
 {
@@ -29,6 +30,7 @@ namespace APBD_Kolokwium
             services.AddControllers();
             services.AddDbContext<EventContext>(config =>
                 config.UseSqlServer(Configuration.GetConnectionString("default")));
+            services.AddScoped<IArtistQueryService, ArtistQueryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APBD-Kolokwium", "APBD-Kolo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{29EDA985-B1CA-466B-9328-90A563DDC591}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{111F35CB-36C0-48EA-B2B5-F51783E36901}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{29EDA985-B1CA-466B-9328-90A563DDC591}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29EDA985-B1CA-466B-9328-90A563DDC591}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29EDA985-B1CA-466B-9328-90A563DDC591}.Release|Any CPU.Build.0 = Release|Any CPU
+		{111F35CB-36C0-48EA-B2B5-F51783E36901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{111F35CB-36C0-48EA-B2B5-F51783E36901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{111F35CB-36C0-48EA-B2B5-F51783E36901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{111F35CB-36C0-48EA-B2B5-F51783E36901}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
