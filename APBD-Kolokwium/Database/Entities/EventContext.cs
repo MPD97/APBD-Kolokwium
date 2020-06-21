@@ -9,6 +9,8 @@ namespace Database.Entities
     public class EventContext : DbContext
     {
         public DbSet<Artist> Artists { get; set; }
+        public DbSet<Event> Events { get; set; }
+
         public EventContext([NotNullAttribute] DbContextOptions options) : base(options)
         {
         }
@@ -19,6 +21,7 @@ namespace Database.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Artist
             modelBuilder.Entity<Artist>()
                 .HasKey(a => a.IdArtist);
 
@@ -27,6 +30,22 @@ namespace Database.Entities
                 .HasMaxLength(30)
                 .IsRequired(true);
 
+            // Event
+            modelBuilder.Entity<Event>()
+                .HasKey(a => a.IdEvent);
+
+            modelBuilder.Entity<Event>()
+               .Property(a => a.Name)
+               .HasMaxLength(100)
+               .IsRequired(true);
+
+            modelBuilder.Entity<Event>()
+               .Property(a => a.StartDate)
+               .IsRequired(true);
+
+            modelBuilder.Entity<Event>()
+               .Property(a => a.EndDate)
+               .IsRequired(true);
 
             base.OnModelCreating(modelBuilder);
         }
