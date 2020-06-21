@@ -12,7 +12,8 @@ namespace Database.Entities
         public DbSet<Event> Events { get; set; }
         public DbSet<Organiser> Organisers { get; set; }
         public DbSet<ArtistEvent> ArtistEvents { get; set; }
-
+        public DbSet<EventOrganiser> EventOrganisers { get; set; }
+        
         public EventContext([NotNullAttribute] DbContextOptions options) : base(options)
         {
         }
@@ -65,6 +66,15 @@ namespace Database.Entities
                .HasMany(a => a.ArtistEvents)
                .WithOne(a => a.Event);
 
+            modelBuilder.Entity<Event>()
+               .HasMany(a => a.EventOrganisers)
+               .WithOne(a => a.Event);
+
+            // EventOrganiser
+            modelBuilder.Entity<EventOrganiser>()
+               .HasKey(a => new { a.IdEvent, a.IdOrganiser });
+
+
             // Organiser
             modelBuilder.Entity<Organiser>()
                 .HasKey(a => a.IdOrganiser);
@@ -73,6 +83,10 @@ namespace Database.Entities
                 .Property(a => a.Name)
                 .HasMaxLength(30)
                 .IsRequired(true);
+
+            modelBuilder.Entity<Organiser>()
+                .HasMany(a => a.EventOrganisers)
+                .WithOne(a => a.Organiser);
 
             base.OnModelCreating(modelBuilder);
         }
