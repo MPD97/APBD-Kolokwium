@@ -53,9 +53,13 @@ namespace APBD_Kolokwium.Controllers
                 PerformanceDate = performanceDate
             });
 
-
-
-            return NoContent();
+            return result switch
+            {
+                SuccessResponse _ => Ok(result),
+                ErrorResponse _ => BadRequest(result),
+                InternalError _ => StatusCode(500, result),
+                _ => NotFound()
+            };
         }
     }
 }

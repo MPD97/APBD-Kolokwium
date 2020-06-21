@@ -6,6 +6,6 @@ namespace Services
 {
     public interface IArtistManageService
     {
-        public Task<ArtistChangePerformanceDateResponse> ChangePerfomanceDate(ArtistChangePerformanceDateRequest command);
+        public Task<IResponseModel> ChangePerfomanceDate(ArtistChangePerformanceDateRequest command);
     }
 }

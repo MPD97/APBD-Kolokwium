@@ -18,29 +18,29 @@ namespace Services
         {
             _eventContext = eventContext;
         }
-        public async Task<ArtistChangePerformanceDateResponse> ChangePerfomanceDate(ArtistChangePerformanceDateRequest command)
+        public async Task<IResponseModel> ChangePerfomanceDate(ArtistChangePerformanceDateRequest command)
         {
             var artistEvent = await _eventContext.ArtistEvents.FirstOrDefaultAsync(
                 ae => ae.IdArtist == command.IdArtist && ae.IdEvent == command.IdEvent);
             if (artistEvent == null)
             {
-                return null;
+                return new ErrorResponse("Artysta nie bierze udziału w wydażeniu");
             }
 
             var event1 = await _eventContext.Events.FirstOrDefaultAsync(e => e.IdEvent == artistEvent.IdEvent);
             if (event1 == null)
             {
-                return null;
+                return new ErrorResponse("Nie mogę znaleźć wydarzenia o podanym id.");
             }
 
             if (event1.StartDate >= DateTime.Now)
             {
-                return null;
+                return new ErrorResponse("Wydarzenie już się rozpoczęło.");
             }
 
             if (command.PerformanceDate <= event1.StartDate || command.PerformanceDate >= event1.EndDate)
             {
-                return null;
+                return new ErrorResponse("Zmiana daty musi miescić się w czasie twania wydarzenia.");
             }
 
             artistEvent.PerformanceDate = command.PerformanceDate;
@@ -48,15 +48,15 @@ namespace Services
 
             if (await _eventContext.SaveChangesAsync() == 0)
             {
-                return null;
+                return new InternalError("Błąd podczas zapisu wydarzenia do bazy danych.");
             }
 
-            return new ArtistChangePerformanceDateResponse
+            return new SuccessResponse("Zmieniono datę wydarzenia.", new ArtistChangePerformanceDateResponse
             {
                 IdArtist = artistEvent.IdArtist,
                 IdEvent = event1.IdEvent,
                 PerformanceDate = artistEvent.PerformanceDate
-            };
+            });
         }
     }
     public class ArtistQueryService : IArtistQueryService
