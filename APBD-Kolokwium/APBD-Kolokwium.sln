@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APBD-Kolokwium", "APBD-Kolokwium\APBD-Kolokwium.csproj", "{AA6B8F25-3A66-41B3-BAD4-9E131E2055D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{29EDA985-B1CA-466B-9328-90A563DDC591}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AA6B8F25-3A66-41B3-BAD4-9E131E2055D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA6B8F25-3A66-41B3-BAD4-9E131E2055D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA6B8F25-3A66-41B3-BAD4-9E131E2055D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29EDA985-B1CA-466B-9328-90A563DDC591}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29EDA985-B1CA-466B-9328-90A563DDC591}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29EDA985-B1CA-466B-9328-90A563DDC591}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29EDA985-B1CA-466B-9328-90A563DDC591}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
